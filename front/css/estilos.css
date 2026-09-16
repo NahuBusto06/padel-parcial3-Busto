@@ -19,6 +19,11 @@ button { color: white; background: #12613f; border: 0; cursor: pointer; }
 .tarjeta { flex: 1 1 230px; padding: 1rem; border: 1px solid #d4ddd8; border-radius: 8px; }
 .pagada { color: #08752f; font-weight: bold; }
 .pendiente { color: #bd1e1e; font-weight: bold; }
+.tarjeta .btn-pagar { margin-top: 0.5rem; width: 100%; }
+.tarjeta .btn-pagar:disabled { opacity: 0.6; cursor: not-allowed; }
+#mensaje { font-weight: bold; min-height: 1.2em; }
+#mensaje.mensaje-exito { color: #08752f; }
+#mensaje.mensaje-error { color: #bd1e1e; }
 .tabla-contenedor { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 0.75rem; border-bottom: 1px solid #d4ddd8; text-align: left; }
