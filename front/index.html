@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Rebote | Reservas</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header>
+    <h1>Complejo de pádel “El Rebote”</h1>
+    <p>Administración de reservas y pagos</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Nueva reserva</h2>
+      <form id="form-reserva">
+        <label for="cliente">Cliente</label>
+        <input id="cliente" name="cliente" type="text" required>
+
+        <label for="cancha">Cancha</label>
+        <select id="cancha" name="idCancha" required>
+          <option value="">Seleccione una cancha</option>
+          <!-- TODO: completar desde la API mostrando nombre y precio. -->
+        </select>
+
+        <label for="fecha">Fecha</label>
+        <input id="fecha" name="fecha" type="date" required>
+
+        <label for="hora">Hora</label>
+        <input id="hora" name="hora" type="time" required>
+
+        <button type="submit">Registrar reserva</button>
+      </form>
+      <p id="mensaje" role="status" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="titulo-reservas">
+      <h2 id="titulo-reservas">Reservas</h2>
+      <div id="lista-reservas" class="tarjetas">
+        <!-- TODO: crear las tarjetas desde JavaScript. -->
+      </div>
+    </section>
+
+    <section aria-labelledby="titulo-recaudacion">
+      <h2 id="titulo-recaudacion">Recaudación por cancha</h2>
+      <div class="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th>Cancha</th>
+              <th>Reservas</th>
+              <th>Cobrado</th>
+              <th>Pendiente</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-recaudacion">
+            <!-- TODO: completar desde la API. -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
+
