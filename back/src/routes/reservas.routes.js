@@ -1,7 +1,19 @@
 const { Router } = require("express");
+const {
+  listarReservas,
+  crearReserva,
+  registrarPago
+} = require("../controllers/reservas.controller");
+
 const router = Router();
 
-// TODO: importar los controladores y definir GET /, POST / y PUT /:id/pago.
+// GET /api/reservas
+router.get("/", listarReservas);
+
+// POST /api/reservas
+router.post("/", crearReserva);
+
+// PUT /api/reservas/:id/pago
+router.put("/:id/pago", registrarPago);
 
 module.exports = router;
-

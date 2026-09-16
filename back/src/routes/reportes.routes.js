@@ -1,7 +1,9 @@
 const { Router } = require("express");
+const { recaudacionPorCancha } = require("../controllers/reportes.controller");
+
 const router = Router();
 
-// TODO: importar el controlador y definir GET /recaudacion.
+// GET /api/reportes/recaudacion
+router.get("/recaudacion", recaudacionPorCancha);
 
 module.exports = router;
-

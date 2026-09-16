@@ -5,14 +5,32 @@ const config = {
   password: process.env.DB_PASSWORD,
   server: process.env.DB_SERVER,
   database: process.env.DB_DATABASE,
-  port: Number(process.env.DB_PORT || 1433),
   options: {
     encrypt: false,
-    trustServerCertificate: true
+    trustServerCertificate: true,
+    // Si conectás a una instancia con nombre (ej: localhost\SQLEXPRESS),
+    // usamos instanceName en vez de un puerto fijo. Requiere que el
+    // servicio "SQL Server Browser" esté corriendo en Windows.
+    ...(process.env.DB_INSTANCE
+      ? { instanceName: process.env.DB_INSTANCE }
+      : {})
   }
 };
 
-// TODO: crear y exportar la conexión/pool según la estructura trabajada en clase.
+// Solo fijamos el puerto si NO estamos usando instanceName.
+if (!process.env.DB_INSTANCE) {
+  config.port = Number(process.env.DB_PORT || 1433);
+}
 
-module.exports = { sql, config };
+const poolPromise = new sql.ConnectionPool(config)
+  .connect()
+  .then((pool) => {
+    console.log("Conectado a SQL Server como", process.env.DB_USER);
+    return pool;
+  })
+  .catch((err) => {
+    console.error("Error de conexión a la base de datos:", err.message);
+    throw err;
+  });
 
+module.exports = { sql, config, poolPromise };
